@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import database from './database'
 
 class App {
 	public express: express.Application
@@ -27,7 +28,9 @@ class App {
 		})
 	}
 
-	private async initializeDatabase(): Promise<void> {}
+	private async initializeDatabase(): Promise<void> {
+		await database.getConnection()
+	}
 }
 
 export default new App().express
