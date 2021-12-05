@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
 import { UserRepository } from '@repositories/index'
 import { hash } from 'bcrypt'
+import { generate } from '@utils/token'
+import ServerError from '@errors/serverError'
 
 class UserController {
 	async register(req: Request, res: Response, next): Promise<Response> {
@@ -9,7 +11,7 @@ class UserController {
 		const existUser = await UserRepository().findOne({ username })
 
 		if (existUser) {
-			return next(new Error('User already exists'))
+			return next(new ServerError(undefined, 'User already exists'))
 		}
 
 		const passwordHash = await hash(password, 8)
@@ -18,7 +20,7 @@ class UserController {
 
 		await UserRepository().save(user)
 
-		return res.send({ user: user }).status(201)
+		return res.send({ token: generate({ userId: user.id }) }).status(201)
 	}
 }
 
