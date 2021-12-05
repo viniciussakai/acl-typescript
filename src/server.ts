@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import database from './database'
+import routes from '@routes/index'
 
 class App {
 	public express: express.Application
@@ -20,7 +21,9 @@ class App {
 		this.express.use(express.json())
 	}
 
-	private routes(): void {}
+	private routes(): void {
+		this.express.use('/', routes)
+	}
 
 	private error(): void {
 		this.express.use((err, req, res, next) => {

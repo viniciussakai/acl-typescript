@@ -9,7 +9,7 @@ const config: ConnectionOptions = {
 	username: process.env.MYSQL_USER,
 	password: process.env.MYSQL_PASSWORD,
 	database: process.env.MYSQL_DB,
-	entities: [path.resolve(__dirname, '..', 'models', '*.ts')],
+	entities: [path.resolve(__dirname, '..', 'entities', '*.ts')],
 	migrations: [path.resolve(__dirname, '..', 'database', 'migrations', '*.ts')],
 	cli: {
 		entitiesDir: path.resolve(__dirname, '..', 'models'),

@@ -4,7 +4,8 @@
 		"paths": {
 			"@database/*": ["./src/database/*"],
 			"@controllers/*": ["./src/controllers/*"],
-			"@models/*": ["./src/models/*"],
+			"@entities/*": ["./src/entities/*"],
+			"@repositories/*": ["./src/repositories/*"],
 			"@config/*": ["./src/config/*"],
 			"@routes/*": ["./src/routes/*"],
 			"@utils/*": ["./src/utils/*"],
