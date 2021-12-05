@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import database from './database'
 import routes from '@routes/index'
+import { handleError } from '@errors/errorHandler'
 
 class App {
 	public express: express.Application
@@ -14,6 +15,7 @@ class App {
 		this.initializeDatabase()
 		this.middleware()
 		this.routes()
+		this.error()
 	}
 
 	private middleware(): void {
@@ -28,6 +30,8 @@ class App {
 	private error(): void {
 		this.express.use((err, req, res, next) => {
 			if (!err) next()
+
+			return handleError(err, res)
 		})
 	}
 
