@@ -1,9 +1,9 @@
-import userController from '@controllers/userController'
+import AuthController from '@controllers/authController'
 import { Router } from 'express'
 
 const routes = Router()
 
-routes.post('/register', userController.register)
-routes.post('/login', userController.login)
+routes.post('/register', AuthController.register)
+routes.post('/login', AuthController.login)
 
 export default routes

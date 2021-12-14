@@ -4,7 +4,7 @@ import { hash, compare } from 'bcrypt'
 import { generate } from '@utils/token'
 import ServerError from '@errors/serverError'
 
-class UserController {
+class AuthController {
 	async register(req: Request, res: Response, next): Promise<Response> {
 		const { password, username } = req.body
 
@@ -42,4 +42,4 @@ class UserController {
 	}
 }
 
-export default new UserController()
+export default new AuthController()
